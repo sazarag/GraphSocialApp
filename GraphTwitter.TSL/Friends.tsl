@@ -1,0 +1,40 @@
+cell struct Character
+{
+	String Name;
+	byte Gender;
+	bool Married;
+	long Spouse;
+	long Performer;
+}
+
+cell struct Performer
+{
+	String Name;
+	int Age;
+	List<long> Characters;
+}
+
+cell struct Friendship
+{
+	List<long> friends;
+}
+
+cell struct User
+{
+    string name;
+    List<CellId> tweets; // Each tweet is identified by a 64-bit long integer    
+}
+
+cell struct Tweet
+{
+    long user; // A user is identified by a 64-bit long integer
+    DateTime time;
+    string text;
+}
+
+cell struct FollowList
+{
+	long user;
+	List<long> follows;
+}
+
