@@ -49,7 +49,7 @@ namespace GraphTwitter
                         string userName = consoleText.Replace("wall", "").Trim();
                         User user = GraphTwitter.GetUser(userName);
                         List<Tweet> tweets = GetWall(user);
-                        WriteTweetsToConsole("", tweets);                        
+                        WriteTweetsToConsole( tweets);                        
                     }
                    else if (consoleText.ToLower().Contains("follows"))
                     {
@@ -65,7 +65,7 @@ namespace GraphTwitter
                         if (user.name != null)
                         {
                             List<Tweet> tweets = GraphTwitter.Reading(user);
-                            WriteTweetsToConsole(user.name, tweets);
+                            WriteTweetsToConsole(tweets);
                         }                        
                     }
                 }              
@@ -181,7 +181,7 @@ namespace GraphTwitter
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="tweets"></param>
-        public unsafe static void WriteTweetsToConsole(string _userName, List<Tweet> tweets){
+        public unsafe static void WriteTweetsToConsole( List<Tweet> tweets){
              foreach (Tweet tweetRecord in tweets.OrderByDescending(e => e.time))
             {
                 Console.WriteLine(GetUser(tweetRecord.user).name + " - " + tweetRecord.text + " (" + (DateTime.UtcNow - tweetRecord.time).Minutes + " Minutes ago" + ")");
