@@ -25,15 +25,16 @@ namespace GraphTwitter
             User Alice = GraphTwitter.CreateUser("Alice");
             User Bob = GraphTwitter.CreateUser("Bob");
             User Charlie = GraphTwitter.CreateUser("Charlie");
-            #endregion 
 
             Console.WriteLine(Environment.NewLine + "The user list: ");
             foreach (var cm in Global.LocalStorage.User_Selector())
             {
                 Console.WriteLine(cm.name);
             }
-
-           while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
+            #endregion 
+           
+            #region ReadKey Secition
+            while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
            {
                string consoleText = Console.ReadLine();
               
@@ -68,8 +69,10 @@ namespace GraphTwitter
                             WriteTweetsToConsole(tweets);
                         }                        
                     }
-                }              
-           }           
+                }
+
+           }
+            #endregion
         }
 
         /// <summary>
@@ -91,8 +94,7 @@ namespace GraphTwitter
         {
             return Global.LocalStorage.User_Selector().Where(us => us.CellID == userId).FirstOrDefault();
         }
-
-
+        
         /// <summary>
         /// Create User via usernameparameter 
         /// </summary>
@@ -148,7 +150,7 @@ namespace GraphTwitter
         }
 
         /// <summary>
-        /// returns user's and follows' posts on the wall 
+        /// Returns user's and follows' posts on the wall 
         /// </summary>
         /// <param name="user"></param>
         /// <param name="followList"></param>
